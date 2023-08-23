@@ -25,7 +25,9 @@ router.post("/shorten", async (context) => {
   const shortId = nanoid(7); // Generate ID pendek dengan panjang 7 karakter
   urlDatabase[shortId] = originalUrl;
 
-  context.response.body = { shortUrl: `http://localhost:8000/${shortId}` };
+  context.response.body = {
+    shortUrl: `https://able-worm-91.deno.dev/${shortId}`,
+  };
 });
 
 router.get("/:shortId", async (context) => {
@@ -44,5 +46,5 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 
 // Jalankan server
-console.log("Server is running on http://localhost:8000");
+console.log("Server is running on https://able-worm-91.deno.dev");
 await app.listen({ port: 8000 });
